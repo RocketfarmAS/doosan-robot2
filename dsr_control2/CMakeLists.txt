@@ -15,11 +15,6 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic -fpermissive)
 endif()
 
-#??? find_package(ament_cmake REQUIRED COMPONENTS
-#???   dsr_msgs2
-#???   rclcpp
-#??? )
-
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
@@ -32,12 +27,6 @@ find_package(hardware_interface REQUIRED)
 find_package(moveit_msgs REQUIRED)
 
 
-#??? catkin_package(
-#???   INCLUDE_DIRS include
-#???   CATKIN_DEPENDS dsr_msgs2 roscpp
-#??? )
-
-
 SET( COMMON_INC_FILES
   ../common2/include
 )
@@ -47,14 +36,12 @@ SET( COMMON_LIB_FILES
 
 include_directories(
   include
-  #ROS2 ${catkin_INCLUDE_DIRS}
   ${Boost_INCLUDE_DIRS}
 
   ${COMMON_INC_FILES}
 )
 
 SET( SRC_FILES
-  #ROS2 ${SERIAL_SRC_FILES}
   src/dsr_hw_interface2.cpp
   src/dsr_control_node2.cpp
 )
