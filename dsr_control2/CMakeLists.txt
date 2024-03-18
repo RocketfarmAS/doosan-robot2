@@ -15,26 +15,16 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic -fpermissive)
 endif()
 
-#??? find_package(ament_cmake REQUIRED COMPONENTS
-#???   dsr_msgs2
-#???   rclcpp
-#??? )
-
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(std_srvs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(dsr_msgs2 REQUIRED)
 find_package(controller_manager REQUIRED)
 find_package(hardware_interface REQUIRED)
 find_package(moveit_msgs REQUIRED)
-
-
-#??? catkin_package(
-#???   INCLUDE_DIRS include
-#???   CATKIN_DEPENDS dsr_msgs2 roscpp
-#??? )
 
 
 SET( COMMON_INC_FILES
@@ -46,14 +36,12 @@ SET( COMMON_LIB_FILES
 
 include_directories(
   include
-  #ROS2 ${catkin_INCLUDE_DIRS}
   ${Boost_INCLUDE_DIRS}
 
   ${COMMON_INC_FILES}
 )
 
 SET( SRC_FILES
-  #ROS2 ${SERIAL_SRC_FILES}
   src/dsr_hw_interface2.cpp
   src/dsr_control_node2.cpp
 )
@@ -69,7 +57,7 @@ endif()
 
 add_executable(dsr_control_node2 ${SRC_FILES})
 #??? add_dependencies(dsr_control_node2 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-ament_target_dependencies(dsr_control_node2 rclcpp std_msgs sensor_msgs dsr_msgs2 controller_manager hardware_interface moveit_msgs)
+ament_target_dependencies(dsr_control_node2 rclcpp std_msgs std_srvs sensor_msgs dsr_msgs2 controller_manager hardware_interface moveit_msgs)
 
 #target_link_libraries(dsr_control_node2 ${catkin_LIBRARIES})
 target_link_libraries(dsr_control_node2 boost_system boost_thread)
