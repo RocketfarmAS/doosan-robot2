@@ -2,6 +2,7 @@
 <robot name="h2017">
   
   <link name="base"/>
+
   <joint name="fixed" type="fixed">
     <parent link="base"/>
     <child link="base_0"/>

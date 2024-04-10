@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="h2017">
+    <xacro:arg name="initial_positions_file" default="initial_positions.yaml" />
+    <xacro:arg name="name" default="h2017" />
+
+    <!-- Import h2017 urdf file -->
+    <xacro:include filename="$(find dsr_description2)/urdf/h2017.blue.urdf" />
+
+    <!-- Import control_xacro -->
+    <xacro:include filename="h2017.ros2_control.xacro" />
+
+
+    <xacro:h2017_ros2_control name="FakeSystem" initial_positions_file="$(arg initial_positions_file)"/>
+
+</robot>

@@ -1,0 +1,9 @@
+# Default initial positions for h2017's ros2_control fake system
+
+initial_positions:
+  joint1: 1.571
+  joint2: 0.524
+  joint3: 1.571
+  joint4: 0.0
+  joint5: 1.047
+  joint6: 1.571
