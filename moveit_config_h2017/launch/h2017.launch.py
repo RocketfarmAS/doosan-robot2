@@ -107,9 +107,7 @@ def generate_warehouse_db_launch(ld, moveit_config):
     ld.add_action(
         DeclareLaunchArgument(
             "moveit_warehouse_database_path",
-            default_value=str(
-                moveit_config.package_path / "default_warehouse_mongo_db"
-            ),
+            default_value=str(moveit_config.package_path / "default_warehouse_mongo_db"),
         )
     )
     ld.add_action(DeclareLaunchArgument("reset", default_value="false"))
@@ -118,31 +116,29 @@ def generate_warehouse_db_launch(ld, moveit_config):
     ld.add_action(DeclareLaunchArgument("moveit_warehouse_port", default_value="33829"))
 
     # The default DB host for moveit
-    ld.add_action(
-        DeclareLaunchArgument("moveit_warehouse_host", default_value="localhost")
-    )
+    ld.add_action(DeclareLaunchArgument("moveit_warehouse_host", default_value="localhost"))
 
     # Load warehouse parameters
-    db_parameters = [
-        {
-            "overwrite": False,
-            "database_path": LaunchConfiguration("moveit_warehouse_database_path"),
-            "warehouse_port": LaunchConfiguration("moveit_warehouse_port"),
-            "warehouse_host": LaunchConfiguration("moveit_warehouse_host"),
-            "warehouse_exec": "mongod",
-            "warehouse_plugin": "warehouse_ros_mongo::MongoDatabaseConnection",
-        },
-    ]
+    # db_parameters = [
+    #     {
+    #         "overwrite": False,
+    #         "database_path": LaunchConfiguration("moveit_warehouse_database_path"),
+    #         "warehouse_port": LaunchConfiguration("moveit_warehouse_port"),
+    #         "warehouse_host": LaunchConfiguration("moveit_warehouse_host"),
+    #         "warehouse_exec": "mongod",
+    #         "warehouse_plugin": "warehouse_ros_mongo::MongoDatabaseConnection",
+    #     },
+    # ]
     # Run the DB server
-    db_node = Node(
-        package="warehouse_ros_mongo",
-        executable="mongo_wrapper_ros.py",
-        # TODO(dlu): Figure out if this needs to be run in a specific directory
-        # (ROS 1 version set cwd="ROS_HOME")
-        parameters=db_parameters,
-        condition=IfCondition(LaunchConfiguration("db")),
-    )
-    ld.add_action(db_node)
+    # db_node = Node(
+    #     package="warehouse_ros_mongo",
+    #     executable="mongo_wrapper_ros.py",
+    #     # TODO(dlu): Figure out if this needs to be run in a specific directory
+    #     # (ROS 1 version set cwd="ROS_HOME")
+    #     parameters=db_parameters,
+    #     condition=IfCondition(LaunchConfiguration("db")),
+    # )
+    # ld.add_action(db_node)
 
     # If we want to reset the database, run this node
     reset_node = Node(
@@ -159,12 +155,8 @@ def generate_warehouse_db_launch(ld, moveit_config):
 def generate_move_group_launch(ld, moveit_config):
 
     ld.add_action(DeclareLaunchArgument("debug", default_value="false"))
-    ld.add_action(
-        DeclareLaunchArgument("allow_trajectory_execution", default_value="true")
-    )
-    ld.add_action(
-        DeclareLaunchArgument("publish_monitored_planning_scene", default_value="true")
-    )
+    ld.add_action(DeclareLaunchArgument("allow_trajectory_execution", default_value="true"))
+    ld.add_action(DeclareLaunchArgument("publish_monitored_planning_scene", default_value="true"))
     # load non-default MoveGroup capabilities (space separated)
     ld.add_action(DeclareLaunchArgument("capabilities", default_value=""))
     # inhibit these default MoveGroup capabilities (space separated)
@@ -180,9 +172,7 @@ def generate_move_group_launch(ld, moveit_config):
         "publish_robot_description_semantic": True,
         "allow_trajectory_execution": LaunchConfiguration("allow_trajectory_execution"),
         # Note: Wrapping the following values is necessary so that the parameter value can be the empty string
-        "capabilities": ParameterValue(
-            LaunchConfiguration("capabilities"), value_type=str
-        ),
+        "capabilities": ParameterValue(LaunchConfiguration("capabilities"), value_type=str),
         "disable_capabilities": ParameterValue(
             LaunchConfiguration("disable_capabilities"), value_type=str
         ),
@@ -202,7 +192,7 @@ def generate_move_group_launch(ld, moveit_config):
         package="moveit_ros_move_group",
         executable="move_group",
         output="screen",
-        parameters=move_group_params
+        parameters=move_group_params,
     )
     ld.add_action(move_group_node)
     return ld
@@ -229,14 +219,14 @@ def launch_setup(context, *args, **kwargs):
     # Generate moveit config from files in the moveit_config package
     moveit_config_builder = MoveItConfigsBuilder("h2017", package_name="moveit_config_h2017")
     moveit_config = moveit_config_builder.to_moveit_configs()
-    
-    ld.add_action(DeclareLaunchArgument("robot_description",
-                                        default_value="",
-                                        description="[Optional] Full robot description"))
+
+    ld.add_action(
+        DeclareLaunchArgument(
+            "robot_description", default_value="", description="[Optional] Full robot description"
+        )
+    )
     if LaunchConfiguration("robot_description").perform(context) != "":
-        robot_description = {
-            'robot_description': LaunchConfiguration('robot_description')
-        }
+        robot_description = {"robot_description": LaunchConfiguration("robot_description")}
     moveit_config.robot_description = robot_description
 
     # If there are virtual joints, broadcast static tf by including virtual_joints launch
