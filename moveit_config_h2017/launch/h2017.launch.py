@@ -202,10 +202,11 @@ def generate_move_group_launch(ld, moveit_config):
         package="moveit_ros_move_group",
         executable="move_group",
         output="screen",
-        parameters=move_group_params,
+        parameters=move_group_params
     )
     ld.add_action(move_group_node)
     return ld
+
 
 def launch_setup(context, *args, **kwargs):
     ld = LaunchDescription()
@@ -243,7 +244,7 @@ def launch_setup(context, *args, **kwargs):
 
     # Given the published joint states, publish tf for the robot links
     ld = generate_rsp_launch(ld, moveit_config)
-    
+
     # Include the launch file for move_group
     ld = generate_move_group_launch(ld, moveit_config)
 

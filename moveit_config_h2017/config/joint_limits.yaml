@@ -9,31 +9,43 @@ default_acceleration_scaling_factor: 1.0
 # Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits]
 joint_limits:
   joint1:
+    max_position: 6.28319
+    min_position: -6.28319
     has_velocity_limits: true
     max_velocity: 1.571
     has_acceleration_limits: false
     max_acceleration: 0
   joint2:
+    max_position: 2.35619
+    min_position: -2.35619
     has_velocity_limits: true
     max_velocity: 1.571
     has_acceleration_limits: false
     max_acceleration: 0
   joint3:
+    max_position: 3.14159
+    min_position: -3.14159
     has_velocity_limits: true
     max_velocity: 1.571
     has_acceleration_limits: false
     max_acceleration: 0
   joint4:
+    max_position: 6.28319
+    min_position: -6.28319
     has_velocity_limits: true
     max_velocity: 1.571
     has_acceleration_limits: false
     max_acceleration: 0
   joint5:
+    max_position: 6.28319
+    min_position: -6.28319
     has_velocity_limits: true
     max_velocity: 1.571
     has_acceleration_limits: false
     max_acceleration: 0
   joint6:
+    max_position: 6.28319
+    min_position: -6.28319
     has_velocity_limits: true
     max_velocity: 1.571
     has_acceleration_limits: false

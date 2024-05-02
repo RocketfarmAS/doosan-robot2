@@ -4,7 +4,15 @@
     <xacro:arg name="name" default="h2017" />
 
     <!-- Import h2017 urdf file -->
-    <xacro:include filename="$(find dsr_description2)/urdf/h2017.blue.urdf" />
+    <xacro:include filename="$(find dsr_description2)/xacro/macro.h2017.blue.xacro" />
+    <xacro:h2017 namespace=""/>
+    <!-- World fixed joint-->
+    <joint name="base_base_0" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="base"/>
+      <child link="base_0"/>
+    </joint>
+
 
     <!-- Import control_xacro -->
     <xacro:include filename="h2017.ros2_control.xacro" />
