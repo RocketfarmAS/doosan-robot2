@@ -1,23 +1,25 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="h2017">
-    <xacro:arg name="initial_positions_file" default="initial_positions.yaml" />
-    <xacro:arg name="name" default="h2017" />
+    <xacro:macro name="doosanrobot" params="name:=h2017 namespace:='' initial_positions_file:=initial_positions.yaml">
+          <xacro:property name="initial_positions_file" value="$(arg initial_positions_file)" />
+          <xacro:property name="namespace" value="$(arg namespace)" />
+          <xacro:property name="name" value="$(arg name)" />
+    
 
-    <!-- Import h2017 urdf file -->
-    <xacro:include filename="$(find dsr_description2)/xacro/macro.h2017.blue.xacro" />
-    <xacro:h2017 namespace=""/>
-    <!-- World fixed joint-->
-    <joint name="base_base_0" type="fixed">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <parent link="base"/>
-      <child link="base_0"/>
-    </joint>
+          <!-- Import h2017 urdf file -->
+          <xacro:include filename="$(find dsr_description2)/xacro/macro.h2017.blue.xacro" />
+          <xacro:h2017 namespace="${namespace}"/>
+          <!-- World fixed joint-->
+          <joint name="base_base_0" type="fixed">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <parent link="base"/>
+            <child link="base_0"/>
+          </joint>
 
 
-    <!-- Import control_xacro -->
-    <xacro:include filename="h2017.ros2_control.xacro" />
-
-
-    <xacro:h2017_ros2_control name="FakeSystem" initial_positions_file="$(arg initial_positions_file)"/>
-
+          <!-- Import control_xacro -->
+          <xacro:include filename="$(find moveit_config_h2017)/config/h2017.ros2_control.xacro" />
+          
+          <xacro:h2017_ros2_control name="FakeSystem" initial_positions_file="${initial_positions_file}"/>
+    </xacro:macro>
 </robot>
