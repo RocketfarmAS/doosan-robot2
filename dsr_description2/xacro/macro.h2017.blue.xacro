@@ -18,6 +18,11 @@
 					<mesh filename="file:///$(find dsr_description2)/meshes/h2017_blue/H2017_0_0.dae" scale="0.001 0.001 0.001" />
 				</geometry>
 			</visual>
+      <collision>
+          <geometry>
+              <cylinder radius="0.0" length="0.0"/>
+          </geometry>
+      </collision>
 		</link>
 		<!-- joint 1 -->
 		<joint name="joint1" type="revolute">
@@ -111,6 +116,11 @@
 					<mesh filename="file:///$(find dsr_description2)/meshes/h2017_blue/H2017_3_0.dae" scale="0.001 0.001 0.001" />
 				</geometry>
 			</visual>
+      <collision>
+          <geometry>
+              <cylinder radius="0.0" length="0.0"/>
+          </geometry>
+      </collision>
 		</link>
 		<!-- joint4 -->
 		<joint name="joint4" type="revolute">
@@ -200,6 +210,12 @@
 					<mesh filename="file:///$(find dsr_description2)/meshes/h2017_blue/H2017_6_0.dae" scale="0.001 0.001 0.001" />
 				</geometry>
 			</visual>
+      <collision>
+          <origin rpy="0 0 0" xyz="0 0 0" />
+          <geometry>
+              <cylinder radius="0.00" length="0.0"/>
+          </geometry>
+      </collision>
 		</link>
 	</xacro:macro>
 </robot>
