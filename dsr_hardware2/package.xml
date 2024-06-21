@@ -5,7 +5,7 @@
   <version>0.0.0</version>
   <description>Demo for 6 DOF robot.</description>
 
-  <author email="minsoo.song@doosan.com">Minsoo Song</author>   
+  <author email="minsoo.song@doosan.com">Minsoo Song</author>
 
   <maintainer email="minsoo.song@doosan.com">Minsoo Song</maintainer>
   <maintainer email="ros.robotics@doosan.com">Doosan Robotics</maintainer>
@@ -23,10 +23,10 @@
   <depend>rclcpp</depend>
   <depend>rcpputils</depend>
   <depend>realtime_tools</depend>
-  <depend>trajectory_msgs</depend> 
-  <depend>moveit_msgs</depend> 
-  <depend>yaml-cpp</depend> 
-  
+  <depend>trajectory_msgs</depend>
+  <depend>moveit_msgs</depend>
+  <depend>yaml-cpp</depend>
+
   <build_depend>dsr_msgs2</build_depend>
 
   <exec_depend>controller_manager</exec_depend>
@@ -35,7 +35,6 @@
   <exec_depend>launch_ros</exec_depend>
   <exec_depend>launch</exec_depend>
   <exec_depend>robot_state_publisher</exec_depend>
-  <exec_depend>ros2_control_demo_description</exec_depend>
   <exec_depend>ros2controlcli</exec_depend>
   <exec_depend>ros2launch</exec_depend>
   <exec_depend>rviz2</exec_depend>
