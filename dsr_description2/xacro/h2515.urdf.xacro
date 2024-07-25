@@ -25,7 +25,7 @@
   <joint name="world_fixed" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <parent link="world"/>
-    <child link="base_0"/>
+    <child link="base"/>
   </joint>
 
 </robot>
