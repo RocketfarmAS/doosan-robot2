@@ -19,6 +19,12 @@
         <mesh filename="package://dsr_description2/meshes/h2017_white/H2017_0_0.dae" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
+	<collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dsr_description2/meshes/h2017_white/H2017_0_0.dae" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
   </link>
 
   <joint name="joint1" type="revolute">
@@ -41,6 +47,12 @@
         <mesh filename="package://dsr_description2/meshes/h2017_white/H2017_1_0.dae" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
+	<collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dsr_description2/meshes/h2017_white/H2017_1_0.dae" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
   </link>
   
   <joint name="joint2" type="revolute">
@@ -63,18 +75,36 @@
         <mesh filename="package://dsr_description2/meshes/h2017_white/H2017_2_0.dae" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
+	<collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dsr_description2/meshes/h2017_white/H2017_2_0.dae" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>     
 	    	<mesh filename="package://dsr_description2/meshes/h2017_white/H2017_2_1.dae" scale="0.001 0.001 0.001"/>
       </geometry>
 	  </visual>
+	<collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dsr_description2/meshes/h2017_white/H2017_2_1.dae" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>     
 		<mesh filename="package://dsr_description2/meshes/h2017_white/H2017_2_2.dae" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>	
+	<collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dsr_description2/meshes/h2017_white/H2017_2_2.dae" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
   </link>
 
   <joint name="joint3" type="revolute">
@@ -97,6 +127,12 @@
 		<mesh filename="package://dsr_description2/meshes/h2017_white/H2017_3_0.dae" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>     
+		<mesh filename="package://dsr_description2/meshes/h2017_white/H2017_3_0.dae" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
   </link>
 
   <joint name="joint4" type="revolute">
@@ -119,12 +155,24 @@
 		<mesh filename="package://dsr_description2/meshes/h2017_white/H2017_4_0.dae" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>     
+		<mesh filename="package://dsr_description2/meshes/h2017_white/H2017_4_0.dae" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>     
 		    <mesh filename="package://dsr_description2/meshes/h2017_white/H2017_4_1.dae" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>     
+		    <mesh filename="package://dsr_description2/meshes/h2017_white/H2017_4_1.dae" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
   </link>
 
   <joint name="joint5" type="revolute">
@@ -147,6 +195,12 @@
 		<mesh filename="package://dsr_description2/meshes/h2017_white/H2017_5_0.dae" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>     
+		<mesh filename="package://dsr_description2/meshes/h2017_white/H2017_5_0.dae" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
   </link>
 
   <joint name="joint6" type="revolute">
@@ -169,6 +223,12 @@
 		<mesh filename="package://dsr_description2/meshes/h2017_white/H2017_6_0.dae" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>     
+		<mesh filename="package://dsr_description2/meshes/h2017_white/H2017_6_0.dae" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
   </link>
   
 </robot>

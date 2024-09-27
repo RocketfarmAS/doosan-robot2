@@ -14,13 +14,11 @@
 
   <exec_depend>moveit_resources_panda_description</exec_depend>
   <exec_depend>dsr_description2</exec_depend>
-  <!-- disabled to remove circular dependencies
   <exec_depend>moveit_ros_move_group</exec_depend>
-  <exec_depend>moveit_fake_controller_manager</exec_depend>
+  <!--<exec_depend>moveit_fake_controller_manager</exec_depend>-->
   <exec_depend>moveit_kinematics</exec_depend>
   <exec_depend>moveit_planners_ompl</exec_depend>
   <exec_depend>moveit_ros_visualization</exec_depend>
-  -->
   <build_depend>moveit_common</build_depend>
 
   <depend>moveit_ros_planning_interface</depend>
