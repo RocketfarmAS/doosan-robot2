@@ -1,8 +1,9 @@
-import os
+import yaml
+
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from launch.actions import DeclareLaunchArgument, OpaqueFunction
-from launch.substitutions import LaunchConfiguration, Command
+from launch.substitutions import LaunchConfiguration
 
 from srdfdom.srdf import SRDF
 from launch.conditions import IfCondition
@@ -171,7 +172,8 @@ def generate_move_group_launch(ld, moveit_config):
     move_group_configuration = {
         "publish_robot_description_semantic": True,
         "allow_trajectory_execution": LaunchConfiguration("allow_trajectory_execution"),
-        # Note: Wrapping the following values is necessary so that the parameter value can be the empty string
+        # Note: Wrapping the following values is necessary so that the parameter value can
+        # be the empty string
         "capabilities": ParameterValue(LaunchConfiguration("capabilities"), value_type=str),
         "disable_capabilities": ParameterValue(
             LaunchConfiguration("disable_capabilities"), value_type=str
@@ -182,6 +184,7 @@ def generate_move_group_launch(ld, moveit_config):
         "publish_state_updates": should_publish,
         "publish_transforms_updates": should_publish,
         "monitor_dynamics": False,
+        "planning_plugin": "ompl_interface/OMPLPlanner",
     }
 
     move_group_params = [
@@ -218,6 +221,8 @@ def launch_setup(context, *args, **kwargs):
 
     # Generate moveit config from files in the moveit_config package
     moveit_config_builder = MoveItConfigsBuilder("h2017", package_name="moveit_config_h2017")
+    moveit_config_builder.planning_pipelines(load_all=False)
+    moveit_config_builder.joint_limits()
     moveit_config = moveit_config_builder.to_moveit_configs()
 
     ld.add_action(
@@ -228,6 +233,9 @@ def launch_setup(context, *args, **kwargs):
     if LaunchConfiguration("robot_description").perform(context) != "":
         robot_description = {"robot_description": LaunchConfiguration("robot_description")}
     moveit_config.robot_description = robot_description
+    with open("moveit_config.yaml", "w") as f:
+        # Load the moveit_config.to_dict() into yaml and save it
+        yaml.dump(moveit_config.to_dict(), f, default_flow_style=False)
 
     # If there are virtual joints, broadcast static tf by including virtual_joints launch
     ld = generate_static_virtual_joint_tfs_launch(ld, moveit_config)
